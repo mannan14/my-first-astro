@@ -1,0 +1,13 @@
+---
+import Social from "./social.astro";
+const platform = 'github'
+const username = 'mannan14'
+---
+
+<footer class="w-full text-center p-16 ">
+    <p>Learn more about me and my projects on 
+        <Social platform="twitter" username="MannanDassani"/>
+        <Social platform="instagram" username="mannan.dassani"/>
+        <Social platform={platform} username={username}/>
+    </p>
+</footer>

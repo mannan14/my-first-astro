@@ -1,0 +1,15 @@
+---
+import Navigation from "./navigation.astro";
+import Hamburger from "./hamburger.astro";
+import ThemeIcon from "./ThemeIcon.astro";
+
+const {pageName} = Astro.props 
+---
+
+<header class="border my-6 border-stone-700 border-l-0 border-r-0">
+    <ThemeIcon />
+    <nav>
+        <Hamburger/>
+        <Navigation pageName={pageName}/>
+    </nav>
+</header>

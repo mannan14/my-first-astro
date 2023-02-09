@@ -1,20 +1,11 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+// import Greeting from "../components/Greeting";
 
+const pageTitle = "Mannna Dassani"
+const pageName = 'index'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Mannan Dassani Resume</title>
-	</head>
-	<body>
-		<h1 class="text-2xl mt-4 text-center">Home</h1>
-		<div class="mx-24 my-8 flex justify-between">
-			<a href="/about/" class="hover:bg-blue-400">About</a>
-			<a href="/blog/" class="hover:bg-blue-400">Blog</a>
-		</div>
-	</body> 
-</html>
+<BaseLayout pageTitle={pageTitle} pageName={pageName}>
+    <!-- <Greeting client:load message={["Hej","Hi","Howdy","Hallo", "Hola", "Habari"]} /> -->
+</BaseLayout>

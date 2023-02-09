@@ -1,0 +1,21 @@
+---
+import { AstroComponentInstance } from "astro/dist/runtime/server";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// const tags = ["astro", "successes", "community", "setbacks", "learning in public"]
+
+const allPosts = await Astro.glob('../posts/*md')
+const tags = [...new Set(allPosts.map((post)=>post.frontmatter.tags).flat())] 
+const pageTitle='Tags Page'
+const pageName = 'tags'
+---
+
+<BaseLayout pageTitle={pageTitle} pageName={pageName}>
+    <div class="flex flex-wrap mx-auto w-2/4">
+        {tags.map((tag)=> 
+            <p class="my-2 mx-auto border  px-4 py-1 font-mono text-base bg-blue-400 hover:bg-blue-500">
+                <a href={`/tags/${tag}`}>#{tag}</a>
+            </p>
+        )}
+    </div>
+</BaseLayout>

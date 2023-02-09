@@ -1,0 +1,25 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const {frontmatter} = Astro.props
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+    <div class="flex flex-col text-center my-6">
+        <p>Publising Date: {frontmatter.pubDate.slice(0,10)}</p>
+        <p><em>{frontmatter.description}</em></p>
+        <p>Writing by {frontmatter.author}</p>
+    </div>
+    <img src={frontmatter.image.url} alt={frontmatter.image.alt}>
+    <p class="text-center my-4">Your similar tags of interest:</p>
+    <div class="flex flex-wrap mx-auto w-2/4">
+        <br>
+        {frontmatter.tags.map((tag)=> 
+            <p class="my-2 mx-auto border  px-4 py-1 font-mono text-base bg-blue-400 hover:bg-blue-500">
+                <a href={`/tags/${tag}`}>#{tag}</a>
+            </p>
+        )}
+    </div>
+    <div class="mx-16 my-4">
+        <slot />
+    </div>
+</BaseLayout>

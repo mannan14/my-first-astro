@@ -1,0 +1,13 @@
+---
+import '../styles/base.css'
+
+const {pageName} = Astro.props 
+
+---
+<div class="mx-24 my-4 flex justify-between nav-links">
+    {!(pageName=='index') && <a href="/" class="hover:bg-blue-400">Home</a>}
+    {!(pageName=='about') && <a href="/about/" class="hover:bg-blue-400">About</a>}
+    {!(pageName=='blog') && <a href="/blog/" class="hover:bg-blue-400">Blog</a>}
+    {!(pageName=='tags') && <a href="/tags/" class="hover:bg-blue-400">Tags</a>}
+</div>
+

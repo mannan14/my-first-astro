@@ -1,25 +1,22 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
 
+const allpost = await Astro.glob('../pages/posts/*.md')
+
+const pageTitle = "My Blog"
+const pageName = 'blog'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-2xl mt-4 text-center">My Blog</h1>
-        <div class="mx-24 my-8 flex justify-between">
-            <a href="/" class="hover:bg-blue-400">Home</a>
-            <a href="/about/" class="hover:bg-blue-400">About</a>
-        </div>
-		<div class="mx-20 mt-6 flex justify-between">
-            <p class="text-center w-1/2 m-2 p-4 bg-slate-400">My Astro Learning Blog</p>
-            <br>
-            <p class="text-center w-1/2 m-2 p-4 bg-slate-300">This is where I will post about my journey learning Astro.</p>
-        </div>
-	</body> 
-</html>
+<BaseLayout pageTitle={pageTitle} pageName={pageName}>
+    <div class="mx-20 mt-6 flex justify-between">
+        <p class="text-center w-1/2 m-2 p-4 bg-slate-400">My Astro Learning Blog</p>
+        <br>
+        <p class="text-center w-1/2 m-2 p-4 bg-slate-300">
+            This is where I will post about my journey learning Astro.
+        </p>
+    </div>
+    <ul class="text-center">
+        {allpost.map((post)=> <BlogPost url={post.url} title={post.frontmatter.title}/>)}
+    </ul>
+</BaseLayout>

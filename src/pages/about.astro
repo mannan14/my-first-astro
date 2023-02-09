@@ -1,25 +1,37 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const pageTitle = "About Me"
+const pageName = 'about'
+
+const identity = {
+    firstName: "Mannan Dassani",
+    country: "India",
+    occupation: "Software Developer",
+    hobbies: ["modelling", "coding", "basketball"],
+}
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Python", "Data Science"];
 ---
 
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="viewport" content="width=device-width" />
-<meta name="generator" content={Astro.generator} />
-<title>Astro</title>
-</head>
-<body>
-<h1 class="text-2xl mt-4 text-center">About</h1>
-<div class="mx-24 my-8 flex justify-between">
-    <a href="/" class="hover:bg-blue-400">Home</a>
-    <a href="/blog/" class="hover:bg-blue-400">Blog</a>
-</div>
-<div class="mx-20 mt-6 flex justify-between">
-    <p class="text-center m-2 p-4 bg-slate-400">I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-    <br>
-    <p class="text-center m-2 p-4 bg-slate-300">This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
-</div>
-</body> 
-</html>
+<BaseLayout pageTitle={pageTitle} pageName={pageName}>
+    <div class="mx-auto text-center tracking-wider">
+        <p>Here are a few facts about me:</p>
+        <ul>
+        <li>My name is {identity.firstName}.</li>
+        <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+        {identity.hobbies.length >= 2 && 
+           <p>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</p>
+        } 
+        </ul>
+        <p>My skills are:</p>
+        <ul class="bg-slate-800 w-32 my-2 p-2 mx-auto text-center text-indigo-200">
+        {skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+    </div>
+
+    <div class="mx-20 mt-6 flex justify-between">
+        <p class="text-center w-1/2 m-2 p-4 bg-slate-400">I am working through Astro's introductory tutorial, and it's the first one I built myself!</p>
+        <br>
+        <p class="text-center w-1/2 m-2 p-4 bg-slate-500">This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+    </div>
+</BaseLayout>
